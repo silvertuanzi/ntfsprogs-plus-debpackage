@@ -1,0 +1,32 @@
+# Debian package build artifacts
+*.deb
+*.ddeb
+*.udeb
+*.build
+*.buildinfo
+*.changes
+*.dsc
+*.tar.xz
+*.tar.gz
+*.tar.bz2
+
+# dpkg-buildpackage output
+debian/debhelper-build-stamp
+debian/files
+debian/*.substvars
+debian/*.debhelper*
+debian/*.postinst.debhelper
+debian/*.prerm.debhelper
+
+# dh_* temporary directories
+debian/tmp/
+debian/ntfsprogs-plus*/
+debian/.debhelper/
+debian/.debhelper-generated/
+
+# editor junk
+*~
+*.swp
+*.swo
+.DS_Store
+
