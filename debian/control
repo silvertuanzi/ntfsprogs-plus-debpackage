@@ -1,0 +1,29 @@
+Source: ntfsprogs-plus
+Section: utils
+Priority: optional
+Maintainer: Silvertuanzi <126318157+silvertuanzi@users.noreply.github.com>
+Standards-Version: 4.7.0
+Build-Depends:
+ debhelper-compat (= 13),
+ automake,
+ autoconf,
+ libtool,
+ pkg-config,
+ libgcrypt20-dev,
+ libgnutls28-dev
+Rules-Requires-Root: no
+
+Package: ntfsprogs-plus
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends}
+Provides: ntfs-3g
+Conflicts: ntfs-3g
+Description: NTFS filesystem utilities
+ A collection of NTFS filesystem utilities and libraries.
+ This package provides tools such as ntfsck, mkntfs,
+ ntfsresize, ntfsclone, ntfslabel, ntfsinfo and ntfscluster,
+ together with the libntfs library and development headers.
+ Especially ntfsck, a stronger fsck tool similar to chkdsk
+ on Windows.
