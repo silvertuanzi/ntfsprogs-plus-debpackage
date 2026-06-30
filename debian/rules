@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+%:
+	dh $@ --sourcedirectory=src
+
+override_dh_auto_configure:
+	test -f src/configure.ac
+	cd src && ./autogen.sh
+
+	dh_auto_configure -- \
+		--prefix=/usr \
+		--includedir=/usr/include/ntfsprogs-plus \
+		--disable-ldconfig \
+		--enable-xattr-mappings \
+		--enable-posix-acls \
+		--enable-static=no \
+		--libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
+
+override_dh_auto_install:
+	dh_auto_install -- \
+		rootlibdir=/usr/lib/$(DEB_HOST_MULTIARCH)
+

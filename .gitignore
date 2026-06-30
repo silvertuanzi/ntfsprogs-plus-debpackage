@@ -17,6 +17,8 @@ debian/*.substvars
 debian/*.debhelper*
 debian/*.postinst.debhelper
 debian/*.prerm.debhelper
+debian/autoreconf.before
+debian/autoreconf.after
 
 # dh_* temporary directories
 debian/tmp/
