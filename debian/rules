@@ -10,13 +10,11 @@ override_dh_auto_configure:
 	cd src && ./autogen.sh
 
 	dh_auto_configure -- \
-		--prefix=/usr \
 		--includedir=/usr/include/ntfsprogs-plus \
 		--disable-ldconfig \
 		--enable-xattr-mappings \
 		--enable-posix-acls \
-		--enable-static=no \
-		--libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
+		--enable-static=no
 
 override_dh_auto_install:
 	dh_auto_install -- \
