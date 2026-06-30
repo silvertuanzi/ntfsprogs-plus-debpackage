@@ -1,0 +1,43 @@
+name: Build Package (Debian 12)
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-debian12:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: Build inside Debian 12 Docker
+        run: |
+          docker run --rm -v "$PWD:/src" debian:12 bash -c "
+            apt-get update &&
+            apt-get install -y \
+              build-essential debhelper automake autoconf libtool \
+              pkgconf libgcrypt20-dev libgnutls28-dev &&
+            cd /src &&
+            DEB_BUILD_OPTIONS=noddebs dpkg-buildpackage -us -uc -b &&
+            mv /*.deb /src/
+          "
+
+      - name: Rename Debian 12 build artifact
+        run: |
+          mv *.deb ./ntfsprogs-plus_${{ github.ref_name }}_debian12_amd64.deb
+
+      - name: Upload .deb to release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: ./*.deb
+          overwrite_files: true
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

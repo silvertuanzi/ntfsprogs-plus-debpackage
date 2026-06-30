@@ -31,10 +31,16 @@ jobs:
         with:
           files: ../*.deb
           body: |
-            Experimental build in Ubuntu 22.04. 
-            This package is built on Ubuntu 22.04 and only depends on libc6.
-            It is expected to work on Ubuntu 22.04+ and Debian 12+,
-            but only the Ubuntu 22.04 build environment is currently tested.
+            ### Ubuntu 22.04 build (recommended)
+            Built on Ubuntu 22.04 LTS.
+            This package only depends on libc6 at runtime and is expected to work on Ubuntu 22.04+, Ubuntu 24.04+, and Debian 12+.
+            This is the primary build provided by this project.
+            
+            ### Debian 12 build (testing)
+            Built on Debian 12 Bookworm.
+            This build is provided mainly to verify compatibility with Debian's toolchain and packaging environment.
+            Unless you specifically need it, the Ubuntu 22.04 build above is the recommended package.
+            
             Automated build for tag ${{ github.ref_name }}
           overwrite_files: true
           prerelease: true
