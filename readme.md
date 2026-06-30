@@ -4,7 +4,7 @@ Debian packaging for the upstream [ntfsprogs-plus](https://github.com/ntfsprogs-
 
 To avoid ABI compatibility issues across different Debian and Ubuntu releases, building the package from source is the recommended installation method.
 
-For convenience, experimental prebuilt packages built on Ubuntu 22.04 are also provided in the GitHub Releases. Thanks to glibc's backward compatibility, they are expected to work on Ubuntu 22.04 or later and Debian 12 (Bookworm) or later, but only the Ubuntu 22.04 build environment is currently tested.
+For convenience, experimental prebuilt packages built on Ubuntu 22.04 are also provided in the [Releases](https://github.com/silvertuanzi/ntfsprogs-plus-debpackage/releases). Thanks to glibc's backward compatibility, they are expected to work on Ubuntu 22.04 or later and Debian 12 (Bookworm) or later, but only the Ubuntu 22.04 build environment is currently tested.
 
 ## Build
 
