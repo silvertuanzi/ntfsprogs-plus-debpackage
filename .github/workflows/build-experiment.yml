@@ -1,0 +1,42 @@
+name: Build Package
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          submodules: 'recursive'
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential debhelper automake autoconf libtool pkg-config libgcrypt20-dev libgnutls28-dev
+
+      - name: Build package
+        run: |
+          dpkg-buildpackage -us -uc -b
+
+      - name: Upload .deb to release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: ../*.deb
+          body: |
+            Experimental build in Ubuntu 22.04. 
+            This package is built on Ubuntu 22.04 and only depends on libc6.
+            It is expected to work on Ubuntu 22.04+ and Debian 12+,
+            but only the Ubuntu 22.04 build environment is currently tested.
+            Automated build for tag ${{ github.ref_name }}
+          overwrite_files: true
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
