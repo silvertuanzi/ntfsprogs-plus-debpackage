@@ -25,7 +25,7 @@ jobs:
               build-essential debhelper automake autoconf libtool \
               pkgconf libgcrypt20-dev libgnutls28-dev &&
             cd /src &&
-            DEB_BUILD_OPTIONS=noddebs dpkg-buildpackage -us -uc -b &&
+            DEB_BUILD_OPTIONS=noautodbgsym dpkg-buildpackage -us -uc -b &&
             mv /*.deb /src/
           "
 
