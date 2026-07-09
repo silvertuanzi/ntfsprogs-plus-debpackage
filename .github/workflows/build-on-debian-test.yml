@@ -23,7 +23,7 @@ jobs:
             apt-get update &&
             apt-get install -y \
               build-essential debhelper automake autoconf libtool \
-              pkgconf libgcrypt20-dev libgnutls28-dev &&
+              pkgconf libgcrypt20-dev libgnutls28-dev libhd-dev libblkid-dev &&
             cd /src &&
             DEB_BUILD_OPTIONS=noautodbgsym dpkg-buildpackage -us -uc -b &&
             mv /*.deb /src/

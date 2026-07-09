@@ -10,7 +10,9 @@ Build-Depends:
  libtool,
  pkg-config,
  libgcrypt20-dev,
- libgnutls28-dev
+ libgnutls28-dev,
+ libhd-dev,
+ libblkid-dev
 Rules-Requires-Root: no
 
 Package: ntfsprogs-plus
