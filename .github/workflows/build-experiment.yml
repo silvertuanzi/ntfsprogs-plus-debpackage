@@ -26,22 +26,19 @@ jobs:
         run: |
           dpkg-buildpackage -us -uc -b
 
+      - name: Rename Ubuntu build artifact
+        run: |
+          mv ../*.deb ../ntfsprogs-plus_${{ github.ref_name }}_ubuntu_amd64.deb
+      
       - name: Upload .deb to release
         uses: softprops/action-gh-release@v3
         with:
           files: ../*.deb
           body: |
-            ### Ubuntu 22.04 build (recommended)
-            Built on Ubuntu 22.04 LTS.
-            This package only depends on libc6 at runtime and is expected to work on Ubuntu 22.04+, Ubuntu 24.04+, and Debian 12+.
-            This is the primary build provided by this project.
-            
-            ### Debian 12 build (testing)
-            Built on Debian 12 Bookworm.
-            This build is provided mainly to verify compatibility with Debian's toolchain and packaging environment.
-            Unless you specifically need it, the Ubuntu 22.04 build above is the recommended package.
-            
-            Automated build for tag ${{ github.ref_name }}
+            ### Ubuntu build
+            Built on Ubuntu 22.04 LTS and is expected to work on Ubuntu 22.04+.
+          
+          append_body: true
           overwrite_files: true
           prerelease: true
         env:

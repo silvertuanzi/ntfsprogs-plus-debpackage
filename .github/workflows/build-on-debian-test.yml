@@ -31,12 +31,17 @@ jobs:
 
       - name: Rename Debian 12 build artifact
         run: |
-          mv *.deb ./ntfsprogs-plus_${{ github.ref_name }}_debian12_amd64.deb
+          mv *.deb ./ntfsprogs-plus_${{ github.ref_name }}_debian_amd64.deb
 
       - name: Upload .deb to release
         uses: softprops/action-gh-release@v3
         with:
           files: ./*.deb
+          body: |
+            ### Debian build
+            Built on Debian 12 Bookworm and is expected to work on Debian 12+.
+            
+          append_body: true
           overwrite_files: true
           prerelease: true
         env:
