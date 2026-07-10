@@ -1,0 +1,2 @@
+usr/bin/fsck.ntfs usr/bin/ntfsfix
+usr/bin/mount.ntfs-3g usr/bin/mount.lowntfs-3g

@@ -25,4 +25,13 @@ For convenience, experimental prebuilt packages built on Ubuntu 22.04 are also p
 	```
 	sudo apt install ../ntfsprogs-plus_*.deb
 	```
- 
+
+## NTFS-3G Compatibility
+
+Since this package declares `Provides: ntfs-3g`, it includes several compatibility wrappers for legacy software that expect the original `ntfs-3g` package:
+
+1. `ntfsfix -> fsck.ntfs`: Provides an alias for `fsck.ntfs` to repair NTFS filesystems.
+2. `mount.ntfs-3g`: A compatibility wrapper that forwards to `mount -t ntfs`. This allows legacy applications that invoke `mount -t ntfs-3g` to use the system's configured `ntfs` filesystem implementation. If the [new NTFS driver](https://github.com/namjaejeon/linux-ntfs) is available (either built into Linux kernel 7.1+ or installed through [my DKMS package](https://github.com/silvertuanzi/linux-ntfs-dkms-deb)), it will be used. Otherwise, the behavior follows the kernel's handling of the `ntfs` filesystem type, which may use the legacy read-only NTFS driver or another implementation depending on the kernel configuration.
+3. `mount.lowntfs-3g`: A symbolic link to the `mount.ntfs-3g` compatibility wrapper.
+
+These wrappers are provided for compatibility with legacy software and are not intended for direct interactive use.
