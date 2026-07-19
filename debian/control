@@ -18,7 +18,7 @@ Build-Depends:
 Rules-Requires-Root: no
 
 Package: ntfsprogs-plus
-Architecture: any
+Architecture: linux-any
 Depends:
  ${shlibs:Depends},
  ${misc:Depends}
