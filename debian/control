@@ -12,7 +12,9 @@ Build-Depends:
  libgcrypt20-dev,
  libgnutls28-dev,
  libhd-dev,
- libblkid-dev
+ libblkid-dev,
+ libgpg-error-dev,
+ uuid-dev
 Rules-Requires-Root: no
 
 Package: ntfsprogs-plus

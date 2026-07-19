@@ -14,7 +14,7 @@ For convenience, experimental prebuilt packages built on Ubuntu 22.04 are also p
 	```
 2. Install build dependencies:
 	```
-	sudo apt install build-essential debhelper automake autoconf libtool pkgconf libgcrypt20-dev libgnutls28-dev libhd-dev libblkid-dev
+	sudo apt install build-essential debhelper automake autoconf libtool pkgconf libgcrypt20-dev libgnutls28-dev libhd-dev libblkid-dev libgpg-error-dev uuid-dev
 	```
 3. Build the package:
 	```
