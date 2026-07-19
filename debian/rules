@@ -6,9 +6,6 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 	dh $@ --sourcedirectory=src
 
 override_dh_auto_configure:
-	test -f src/configure.ac
-	cd src && ./autogen.sh
-
 	dh_auto_configure -- \
 		--includedir=/usr/include/ntfsprogs-plus \
 		--disable-ldconfig \
